@@ -7,13 +7,14 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance;
 
-    [SerializeField]
-    private GameObject _startPanel,
-        _helpPanel,
-        _gamePanel,
-        _gameOverPanel,
-        _player,
-        _obstaclePrefab;
+
+    [SerializeField] private GameObject startPanel;
+    [SerializeField] private GameObject helpPanel;
+    [SerializeField] private GameObject gamePanel;
+    [SerializeField] private GameObject gameOverPanel;
+
+    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject obstaclePrefab;
 
     [SerializeField]
     TMP_Text _scoreText, _endScoreText, _highScoreText;
@@ -30,11 +31,11 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        _startPanel.SetActive(true);
-        _helpPanel.SetActive(false);
-        _gamePanel.SetActive(false);
-        _gameOverPanel.SetActive(false);
-        _player.SetActive(false);
+        startPanel.SetActive(true);
+        helpPanel.SetActive(false);
+        gamePanel.SetActive(false);
+        gameOverPanel.SetActive(false);
+        player.SetActive(false);
 
         score = 0;
         hasGameFinished = false;
@@ -42,8 +43,8 @@ public class GameManager : MonoBehaviour
 
     public void StartHelp()
     {
-        _startPanel.SetActive(false);
-        _helpPanel.SetActive(true);
+        startPanel.SetActive(false);
+        helpPanel.SetActive(true);
     }
 
     public void UpdateScore(int v)
@@ -71,15 +72,15 @@ public class GameManager : MonoBehaviour
         _highScoreText.text = "HIGHSCORE " + highScore.ToString();
         _endScoreText.text = "SCORE " + score.ToString();
 
-        _gameOverPanel.SetActive(true);
-        _gamePanel.SetActive(false);
+        gameOverPanel.SetActive(true);
+        gamePanel.SetActive(false);
     }
 
     public void StartGame()
     {
-        _helpPanel.SetActive(false);
-        _gamePanel.SetActive(true);
-        _player.SetActive(true);
+        helpPanel.SetActive(false);
+        gamePanel.SetActive(true);
+        player.SetActive(true);
 
         StartCoroutine(Spawner());
 
@@ -102,7 +103,7 @@ public class GameManager : MonoBehaviour
     {
         while(!hasGameFinished)
         {
-            Instantiate(_obstaclePrefab, Vector3.zero, _obstaclePrefab.transform.rotation);
+            Instantiate(obstaclePrefab, Vector3.zero, obstaclePrefab.transform.rotation);
             yield return new WaitForSeconds(2f);
         }
     }

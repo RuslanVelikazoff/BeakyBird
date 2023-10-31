@@ -136,9 +136,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7127d7c2f56289d49b4ac4ed82db210b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 10
-  _posY: 12
-  _posX: 16
-  _yellow: {fileID: 21300000, guid: 694b066cdd538450c8fec0cc4637f082, type: 3}
-  _black: {fileID: 21300000, guid: 3a7a30c8cf6d044a5aaed7799b423d97, type: 3}
-  _red: {fileID: 21300000, guid: 6f5cd18458b5b45878b852ae8f39f6b9, type: 3}
+  speed: 10
+  posY: 12
+  posX: 16
+  yellowSprite: {fileID: 21300000, guid: 8fa109a6df664496e85972f1c0f00ee2, type: 3}
+  blackSprite: {fileID: 21300000, guid: 647579e04ea6543b8806b1211b098711, type: 3}
+  blueSprite: {fileID: 21300000, guid: 5369a6d098f0547e8be6753e4721cb56, type: 3}

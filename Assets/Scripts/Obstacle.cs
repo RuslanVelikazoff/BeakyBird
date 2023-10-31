@@ -1,14 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    [SerializeField]
-    private float _speed, _posY, _posX;
+    [SerializeField] private float speed = 10f;
+    [SerializeField] private float posY = 12f;
+    [SerializeField] private float posX = 16f;
 
-    [SerializeField]
-    private Sprite _yellow, _black, _red;
+    //private Sprite _yellow, _black, _red;
+    [SerializeField] private Sprite yellowSprite;
+    [SerializeField] private Sprite blackSprite;
+    [SerializeField] private Sprite blueSprite;
 
     private int type;
     private int score;
@@ -17,17 +18,17 @@ public class Obstacle : MonoBehaviour
     {
         type = Random.Range(1, 11);
         type = type < 8 ? 0 : type < 10 ? 1 : 2;
-        GetComponent<SpriteRenderer>().sprite = type == 0 ? _yellow : type == 1 ? _black : _red;
+        GetComponent<SpriteRenderer>().sprite = type == 0 ? yellowSprite : type == 1 ? blackSprite : blueSprite;
         score = type == 0 ? 1 : type == 1 ? 0 : 10;
         Vector3 pos = transform.position;
-        pos.x = Random.Range(-_posX, _posX);
-        pos.y = _posY;
+        pos.x = Random.Range(-posX, posX);
+        pos.y = posY;
         transform.position = pos;
     }
 
     private void Update()
     {
-        transform.position += Vector3.down * _speed * Time.deltaTime;
+        transform.position += Vector3.down * speed * Time.deltaTime;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
